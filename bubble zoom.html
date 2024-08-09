@@ -1,0 +1,66 @@
+<html>
+  <body>
+    <style>
+      :root {
+        --imageSize: 90px;
+      }
+      body {
+        display: grid;
+        place-items: center;
+      }
+
+      img {
+        width: var(--imageSize);
+        height: var(--imageSize);
+        border-radius: 50%;
+        outline: 5px solid white;
+        box-shadow: #ccc 5px 5px 15px;
+      }
+
+      .avatars {
+        --items: 10;
+        --delay: 500ms;
+        --colSize: calc(var(--imageSize) / 2);
+
+        display: grid;
+        grid-template-columns: repeat(var(--items), var(--colSize));
+        transition: grid-template-columns 500ms ease-in;
+        transition-delay: var(--delay);
+      }
+
+      .avatars:hover {
+        --delay: 0;
+        --colSize:  calc(var(--imageSize) * 1.3);
+      }
+
+      .avatar {
+        transition: scale 250ms ease-out;
+      }
+      .avatar:hover {
+        scale: 2;
+        z-index: 10;
+      }
+
+      .avatar:hover + *, /* next */
+      .avatar:has(+ .avatar:hover) /* previous */{
+        z-index: 5;
+        scale: 1.5;
+      }
+    </style>
+
+    <section>
+      <div class="avatars">
+        <img class="avatar" src="https://i.pravatar.cc/200?img=14" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=41" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=21" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=12" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=36" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=55" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=31" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=18" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=29" alt="" />
+        <img class="avatar" src="https://i.pravatar.cc/200?img=37" alt="" />
+      </div>
+    </section>
+  </body>
+</html>

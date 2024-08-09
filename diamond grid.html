@@ -1,0 +1,79 @@
+<html>
+  <body>
+    <style>
+      body {
+        display: grid;
+        place-items: center;
+      }
+      .gallery {
+        --size: 100px;
+        --columns: 6;
+        display: grid;
+        grid-template-columns: repeat(var(--columns), var(--size));
+        grid-template-rows: repeat(calc(var(--columns) / 2), var(--size));
+        gap: 7px;
+      }
+
+      img {
+        transition: clip-path 200ms linear, filter 300ms linear;
+        object-fit: cover;
+        width: calc(var(--size) * 2);
+        height: calc(var(--size) * 2);
+        grid-column: span 2;
+        clip-path: path(
+          "M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z"
+        );
+
+        border-radius: 10px;
+      }
+
+      img:hover {
+        clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+        z-index: 10;
+      }
+
+      .gallery:has(img:hover) img:not(:hover){
+        filter: brightness(0.5) contrast(.5);
+      }
+
+      img:nth-child(5n-1) {
+        grid-column: 2 / span 2;
+      }
+    </style>
+
+    <article class="gallery">
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-0.avif"
+        alt="guitar player at concert"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-1.avif"
+        alt="duo singing"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-2.avif"
+        alt="crowd cheering"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-3.avif"
+        alt="singer performing"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-4.avif"
+        alt="singer fistbumping crowd"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-5.avif"
+        alt="man with a guitar singing"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-6.avif"
+        alt="crowd looking at a lighted stage"
+      />
+      <img
+        src="https://assets.codepen.io/1506195/unsplash-music-7.avif"
+        alt="woman singing on stage"
+      />
+    </article>
+  </body>
+</html>
