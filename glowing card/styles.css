@@ -1,0 +1,95 @@
+@property --rotation {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font-family: system-ui;
+  color: white;
+  background: url(https://images.unsplash.com/photo-1499678329028-101435549a4e);
+  background-blend-mode: hard-light;
+  background-size: cover;
+  background-color: hsl(230 35% 7% / 0.7);
+
+  min-block-size: 100svh;
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  width: max(12vw, 36vmin);
+  position: relative;
+  padding: 2em;
+  font-size: max(0.25rem, 5vh);
+  text-align: center;
+  aspect-ratio: 1;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -0.5em;
+  z-index: -1;
+  filter: blur(18px);
+  background-color: #06060675;
+  animation: rotate 7s linear infinite;
+  border: 1.25em solid;
+  border-image: conic-gradient(
+      from var(--rotation),
+      #669900,
+      #99cc33,
+      #ccee66,
+      #006699,
+      #3399cc,
+      #990066,
+      #cc3399,
+      #ff6600,
+      #ff9900,
+      #ffcc00,
+      #669900
+    )
+    1;
+
+  /* 
+    border-image: conic-gradient(
+        from var(--rotation),
+        red,
+        blue,
+        green,
+        yellow,
+        green,
+        blue,
+        red
+      );
+    
+       */
+  /* mask-image: linear-gradient(0deg, black, transparent 10%),
+    linear-gradient(90deg, black, transparent 10%),
+    linear-gradient(180deg, black, transparent 10%),
+    linear-gradient(270deg, black, transparent 10%); */
+}
+
+@keyframes rotate {
+  from {
+    --rotation: 0turn;
+  }
+  to {
+    --rotation: 1turn;
+  }
+}
